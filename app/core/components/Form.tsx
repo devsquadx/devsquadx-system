@@ -1,4 +1,5 @@
-import { ReactNode, PropsWithoutRef } from "react"
+import { Box, Button } from "@chakra-ui/react"
+import React, { PropsWithoutRef, ReactNode } from "react"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
 export { FORM_ERROR } from "final-form"
@@ -46,9 +47,11 @@ export function Form<S extends z.ZodType<any, any>>({
           )}
 
           {submitText && (
-            <button type="submit" disabled={submitting}>
-              {submitText}
-            </button>
+            <Box textAlign="center">
+              <Button type="submit" colorScheme="blue" px="9" size="sm" isLoading={submitting}>
+                {submitText}
+              </Button>
+            </Box>
           )}
 
           <style global jsx>{`

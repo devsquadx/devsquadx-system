@@ -1,3 +1,5 @@
+import { Box, Input } from "@chakra-ui/react"
+import theme from "@chakra-ui/theme"
 import { forwardRef, PropsWithoutRef } from "react"
 import { useField } from "react-final-form"
 
@@ -26,13 +28,14 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
       <div {...outerProps}>
         <label>
           {label}
-          <input {...input} disabled={submitting} {...props} ref={ref} />
+          {/* @ts-ignore */}
+          <Input {...input} disabled={submitting} {...props} ref={ref} />
         </label>
 
         {touched && normalizedError && (
-          <div role="alert" style={{ color: "red" }}>
+          <Box role="alert" color="red.600" textAlign="left" pt="1">
             {normalizedError}
-          </div>
+          </Box>
         )}
 
         <style jsx>{`
@@ -46,7 +49,7 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
             font-size: 1rem;
             padding: 0.25rem 0.5rem;
             border-radius: 3px;
-            border: 1px solid purple;
+            border: 1px solid ${theme.colors.gray["300"]};
             appearance: none;
             margin-top: 0.5rem;
           }

@@ -1,23 +1,32 @@
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+import LoginForm from "app/auth/components/LoginForm"
 import {
   AppProps,
-  ErrorComponent,
-  useRouter,
   AuthenticationError,
   AuthorizationError,
+  ErrorComponent,
   ErrorFallbackProps,
   useQueryErrorResetBoundary,
+  useRouter,
 } from "blitz"
 import { ErrorBoundary } from "react-error-boundary"
-import LoginForm from "app/auth/components/LoginForm"
 
-import { ChakraProvider } from "@chakra-ui/react"
+const theme = extendTheme({
+  styles: {
+    global: {
+      "html, body, #__next": {
+        height: "100%",
+      },
+    },
+  },
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
   const router = useRouter()
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <ErrorBoundary
         FallbackComponent={RootErrorFallback}
         resetKeys={[router.asPath]}

@@ -1,28 +1,12 @@
-import { Box, Button } from "@chakra-ui/react"
-import logout from "app/auth/mutations/logout"
+import { Box } from "@chakra-ui/react"
 import DashboardLayout from "app/core/layouts/DashboardLayout"
-import { BlitzPage, getSession, Routes, useMutation, useRouter } from "blitz"
+import { BlitzPage, getSession } from "blitz"
 import React from "react"
 
 const Home: BlitzPage = () => {
-  const router = useRouter()
-  const [logoutMutation, { isLoading }] = useMutation(logout)
-
-  const handleLogout = async () => {
-    try {
-      await logoutMutation()
-    } catch (err) {
-      console.log(err)
-      router.push(Routes.LoginPage())
-    }
-  }
-
   return (
-    <Box>
-      <Box>Hello world</Box>
-      <Button colorScheme="red" onClick={handleLogout} isLoading={isLoading}>
-        Logout
-      </Button>
+    <Box h="100%">
+      <Box>Main Content</Box>
     </Box>
   )
 }

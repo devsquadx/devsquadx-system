@@ -16,6 +16,7 @@ const theme = extendTheme({
     global: {
       "html, body, #__next": {
         height: "100%",
+        fontFamily: "Roboto",
       },
     },
   },

@@ -1,4 +1,4 @@
-import { Box, Icon, theme } from "@chakra-ui/react"
+import { Box, Icon, theme, Tooltip } from "@chakra-ui/react"
 import { Link, useRouter } from "blitz"
 import React, { useState } from "react"
 import { AiOutlineDollarCircle } from "react-icons/ai"
@@ -22,29 +22,29 @@ const IconLink = ({ icon, name, isActive }) => {
 
 interface Props {}
 
-const links = [
+export const links = [
   {
-    name: "dashboard",
+    name: "Dashboard",
     icon: FiTrello,
     link: "/",
   },
   {
-    name: "projects",
+    name: "Projects",
     icon: BsFiles,
     link: "/projects",
   },
   {
-    name: "customers",
+    name: "Customers",
     icon: FiUsers,
     link: "/customers",
   },
   {
-    name: "money",
+    name: "Money",
     icon: AiOutlineDollarCircle,
     link: "/income",
   },
   {
-    name: "settings",
+    name: "Settings",
     icon: FiSettings,
     link: "/settings",
   },
@@ -65,14 +65,16 @@ const SideBarIcons: React.FC<Props> = () => {
         {links.map((l, index) => (
           <Link href={l.link} key={index}>
             <a>
-              <Box p="5" bg={router.pathname === l.link ? "white" : "gray.800"}>
-                <IconLink
-                  key={index}
-                  icon={l.icon}
-                  name={l.name}
-                  isActive={router.pathname === l.link}
-                />
-              </Box>
+              <Tooltip hasArrow placement="right" label={l.name}>
+                <Box p="5" bg={router.pathname === l.link ? "white" : "gray.800"}>
+                  <IconLink
+                    key={index}
+                    icon={l.icon}
+                    name={l.name}
+                    isActive={router.pathname === l.link}
+                  />
+                </Box>
+              </Tooltip>
             </a>
           </Link>
         ))}

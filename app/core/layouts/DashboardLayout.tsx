@@ -34,7 +34,7 @@ const DashboardLayout = ({ title, children }: LayoutProps) => {
           <MiddleSideBar />
         </Box>
         <Box flex="3">
-          <MainContent>{children}</MainContent>
+          <MainContent title={title}>{children}</MainContent>
         </Box>
         <RightSideBar />
       </Box>

@@ -4,12 +4,13 @@ import MainContentHeading from "./MainContentHeading"
 
 interface Props {
   children: ReactNode
+  title?: string
 }
 
-const MainContent: React.FC<Props> = ({ children }) => {
+const MainContent: React.FC<Props> = ({ children, title }) => {
   return (
     <Box>
-      <MainContentHeading />
+      <MainContentHeading title={title} />
       <Box p="5">{children}</Box>
     </Box>
   )

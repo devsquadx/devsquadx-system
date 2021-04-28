@@ -51,7 +51,15 @@ export function Form<S extends z.ZodType<any, any>>({
 
           {submitText && (
             <Box textAlign="center">
-              <Button type="submit" colorScheme="blue" px="9" size="sm" isLoading={submitting}>
+              <Button
+                fontFamily="Poppins"
+                w="100%"
+                type="submit"
+                colorScheme="blue"
+                px="9"
+                size="sm"
+                isLoading={submitting}
+              >
                 {submitText}
               </Button>
             </Box>

@@ -17,6 +17,7 @@ const LoginPage: BlitzPage = () => {
   )
 }
 
+LoginPage.suppressFirstRenderFlicker = true
 LoginPage.redirectAuthenticatedTo = "/"
 LoginPage.getLayout = (page) => <Layout title="Log In">{page}</Layout>
 

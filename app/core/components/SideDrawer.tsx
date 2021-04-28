@@ -1,4 +1,5 @@
 import {
+  Box,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -12,17 +13,17 @@ interface Props {
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   children: ReactNode
+  title: string
 }
 
-const SideDrawer: React.FC<Props> = React.memo(({ isOpen, setOpen, children }) => {
-  console.log("in drawer")
+const SideDrawer: React.FC<Props> = React.memo(({ isOpen, setOpen, title, children }) => {
   return (
-    <>
-      <Drawer isOpen={isOpen} placement="right" onClose={() => setOpen(false)}>
+    <Box>
+      <Drawer isOpen={isOpen} placement="right" onClose={() => setOpen(false)} size={"lg"}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader>Select Item</DrawerHeader>
+            <DrawerHeader fontFamily="Poppins">{title}</DrawerHeader>
 
             <DrawerBody>{children}</DrawerBody>
 
@@ -35,7 +36,7 @@ const SideDrawer: React.FC<Props> = React.memo(({ isOpen, setOpen, children }) =
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
-    </>
+    </Box>
   )
 })
 

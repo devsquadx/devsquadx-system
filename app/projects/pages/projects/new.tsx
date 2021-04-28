@@ -6,7 +6,7 @@ import createProject from "app/projects/mutations/createProject"
 import { BlitzPage, useMutation, useQuery, useRouter } from "blitz"
 import React, { Suspense } from "react"
 
-const NewProject = () => {
+export const NewProject = () => {
   const router = useRouter()
   const [createProjectMutation] = useMutation(createProject)
   const [{ customers }] = useQuery(getCustomers, { orderBy: { id: "asc" } })

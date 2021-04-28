@@ -29,7 +29,7 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
         <label>
           {label}
           {/* @ts-ignore */}
-          <Input {...input} disabled={submitting} {...props} ref={ref} />
+          <Input {...input} disabled={submitting} {...props} ref={ref} size="lg" />
         </label>
 
         {touched && normalizedError && (

@@ -3,8 +3,13 @@ import DashboardLayout from "app/core/layouts/DashboardLayout"
 import { CustomerForm, FORM_ERROR } from "app/customers/components/CustomerForm"
 import createCustomer from "app/customers/mutations/createCustomer"
 import { BlitzPage, useMutation, useRouter } from "blitz"
+import React, { Suspense } from "react"
 
-const NewCustomerPage: BlitzPage = () => {
+interface Props {
+  returnFunc?: any
+}
+
+export const NewCustomer: React.FC<Props> = ({ returnFunc }) => {
   const router = useRouter()
   const [createCustomerMutation] = useMutation(createCustomer)
 
@@ -20,7 +25,11 @@ const NewCustomerPage: BlitzPage = () => {
         onSubmit={async (values) => {
           try {
             const customer = await createCustomerMutation(values)
-            router.push(`/customers/${customer.id}`)
+            if (returnFunc) {
+              returnFunc(false)
+            } else {
+              router.push(`/customers/${customer.id}`)
+            }
           } catch (error) {
             console.error(error)
             return {
@@ -30,6 +39,16 @@ const NewCustomerPage: BlitzPage = () => {
         }}
       />
     </Box>
+  )
+}
+
+const NewCustomerPage: BlitzPage = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <NewCustomer />
+      </Suspense>
+    </div>
   )
 }
 

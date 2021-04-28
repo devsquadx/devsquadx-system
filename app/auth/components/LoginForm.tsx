@@ -13,9 +13,16 @@ export const LoginForm = (props: LoginFormProps) => {
   const [loginMutation] = useMutation(login)
 
   return (
-    <Box display="flex" alignItems="center" justifyContent="center" h="100vh" bg="gray.100">
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      h="100vh"
+      bg="gray.100"
+      fontFamily="Poppins"
+    >
       <Box shadow="base" p="10" bg="gray.50">
-        <Heading textAlign="center" textTransform="uppercase">
+        <Heading textAlign="center" textTransform="uppercase" fontFamily="Poppins">
           Login
         </Heading>
 

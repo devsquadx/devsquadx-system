@@ -26,7 +26,7 @@ const MiddleSideBar: React.FC<Props> = () => {
       <Box flex="1" display="flex" flexDir="column">
         <br />
         {subLinks.map((sl, index: number) => (
-          <Link href={sl.link}>
+          <Link href={sl.link} key={index}>
             <chakra.a
               boxShadow="md"
               cursor="pointer"

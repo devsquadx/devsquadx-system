@@ -13,6 +13,7 @@ export interface FormProps<S extends z.ZodType<any, any>>
   schema?: S
   onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
   initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
+  mutators?: FinalFormProps<z.infer<S>>["mutators"]
 }
 
 export function Form<S extends z.ZodType<any, any>>({
@@ -21,6 +22,7 @@ export function Form<S extends z.ZodType<any, any>>({
   schema,
   initialValues,
   onSubmit,
+  mutators,
   ...props
 }: FormProps<S>) {
   return (
@@ -34,6 +36,7 @@ export function Form<S extends z.ZodType<any, any>>({
           return error.formErrors.fieldErrors
         }
       }}
+      mutators={mutators}
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
         <form onSubmit={handleSubmit} className="form" {...props}>

@@ -33,7 +33,16 @@ export const links = [
     name: "Projects",
     icon: BsFiles,
     link: "/projects",
-    subLinks: [],
+    subLinks: [
+      {
+        name: "View Projects",
+        link: "/projects",
+      },
+      {
+        name: "Add New Project",
+        link: "/projects/new",
+      },
+    ],
   },
   {
     name: "Customers",

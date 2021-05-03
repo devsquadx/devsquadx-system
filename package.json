@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "blitz dev",
     "build": "NODE_ENV=production blitz build",
-    "start": "blitz start",
+    "start": "NODE_ENV=production blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",

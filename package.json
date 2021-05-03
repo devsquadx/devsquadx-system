@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "blitz dev",
-    "build": "blitz build",
+    "build": "NODE_ENV=production blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
@@ -11,7 +11,7 @@
     "test:watch": "jest --watch",
     "prepare": "husky install",
     "migrate-dev": "blitz prisma migrate dev",
-    "migrate-prod": "blitz prisma migrate deploy"
+    "migrate-prod": "NODE_ENV=production blitz prisma migrate deploy"
   },
   "prisma": {
     "schema": "db/schema.prisma"

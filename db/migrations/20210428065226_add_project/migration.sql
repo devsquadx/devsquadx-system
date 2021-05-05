@@ -1,7 +1,0 @@
--- CreateTable
-CREATE TABLE "Project" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "name" TEXT NOT NULL,
-    "customerId" INTEGER NOT NULL,
-    FOREIGN KEY ("customerId") REFERENCES "Customer" ("id") ON DELETE CASCADE ON UPDATE CASCADE
-);

@@ -7,5 +7,17 @@
     "activityBar.background": "#322558",
     "titleBar.activeBackground": "#46337B",
     "titleBar.activeForeground": "#FBFAFD"
-  }
+  },
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "devsquadx_system",
+      "database": "devsquadx_system",
+      "username": "postgres",
+      "password": "1234"
+    }
+  ]
 }

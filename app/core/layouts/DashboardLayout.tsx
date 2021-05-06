@@ -1,10 +1,11 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Slide, useMediaQuery, useOutsideClick } from "@chakra-ui/react"
 import { Head } from "blitz"
-import React, { ReactNode } from "react"
+import { useAtom } from "jotai"
+import React, { ReactNode, useEffect, useRef } from "react"
 import LeftSideBar from "../components/Dashboard/LeftSideBar"
 import MainContent from "../components/Dashboard/MainContent"
 import MiddleSideBar from "../components/Dashboard/MiddleSideBar"
-import RightSideBar from "../components/Dashboard/RightSideBar"
+import { showSidebarAtom } from "../store"
 
 type LayoutProps = {
   title?: string
@@ -12,6 +13,28 @@ type LayoutProps = {
 }
 
 const DashboardLayout = ({ title, children }: LayoutProps) => {
+  const [isOpen, setOpen] = useAtom(showSidebarAtom)
+  const [isMobile] = useMediaQuery("(max-width: 48em)")
+  const ref = useRef<HTMLElement>(null)
+  useOutsideClick({
+    ref: ref,
+    handler: (e) => {
+      if (isMobile && isOpen) {
+        setOpen(false)
+      }
+    },
+  })
+
+  useEffect(() => {
+    if (window) {
+      if (isMobile) {
+        setOpen(false)
+      } else {
+        setOpen(true)
+      }
+    }
+  }, [isMobile])
+
   return (
     <>
       <Head>
@@ -29,14 +52,34 @@ const DashboardLayout = ({ title, children }: LayoutProps) => {
       </Head>
 
       <Box display="flex" w="100%" h="100%">
-        <Box display="flex">
-          <LeftSideBar />
-          <MiddleSideBar />
+        <Box
+          sx={{
+            zIndex: 10,
+            width: "284px",
+            position: "relative",
+            "@media (max-width: 48em)": {
+              position: "absolute",
+            },
+          }}
+        >
+          <Slide
+            in={isOpen}
+            direction="left"
+            //@ts-ignore
+            ref={ref}
+            style={{ width: "284px" }}
+          >
+            <Box display="flex" h="100%" w="284px" p="0">
+              <LeftSideBar />
+              <MiddleSideBar />
+            </Box>
+          </Slide>
         </Box>
         <Box flex="3">
           <MainContent title={title}>{children}</MainContent>
         </Box>
-        <RightSideBar />
+
+        {/* {!isMobile && <RightSideBar />} */}
       </Box>
     </>
   )

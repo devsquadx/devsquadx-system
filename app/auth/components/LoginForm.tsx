@@ -1,9 +1,9 @@
-import { Box, chakra, Heading } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
-import { AuthenticationError, Link, Routes, useMutation } from "blitz"
+import { AuthenticationError, useMutation } from "blitz"
 
 type LoginFormProps = {
   onSuccess?: () => void
@@ -29,7 +29,7 @@ export const LoginForm = (props: LoginFormProps) => {
         <Form
           submitText="Login"
           schema={Login}
-          initialValues={{ email: "silvasanoj@gmail.com", password: "1234567890" }}
+          initialValues={{ email: "", password: "" }}
           onSubmit={async (values) => {
             try {
               await loginMutation(values)
@@ -53,7 +53,7 @@ export const LoginForm = (props: LoginFormProps) => {
             placeholder="Password"
             type="password"
           />
-          <Box textAlign="center">
+          {/* <Box textAlign="center">
             <Link href={Routes.ForgotPasswordPage()}>
               <chakra.a
                 color="blue.600"
@@ -62,17 +62,17 @@ export const LoginForm = (props: LoginFormProps) => {
                 Forgot your password?
               </chakra.a>
             </Link>
-          </Box>
+          </Box> */}
         </Form>
 
-        <Box textAlign="center" mt="3">
+        {/* <Box textAlign="center" mt="3">
           Or{" "}
           <Link href={Routes.SignupPage()}>
             <chakra.a color="blue.600" _hover={{ cursor: "pointer", textDecoration: "underline" }}>
               Sign Up
             </chakra.a>
           </Link>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   )

@@ -60,10 +60,27 @@ export const links = [
     ],
   },
   {
-    name: "Money",
+    name: "Finance",
     icon: AiOutlineDollarCircle,
-    link: "/income",
-    subLinks: [],
+    link: "/finance",
+    subLinks: [
+      {
+        name: "View Income Types",
+        link: "/finance/incometypes",
+      },
+      {
+        name: "Add New Income Type",
+        link: "/finance/incometypes/new",
+      },
+      {
+        name: "View Expense Types",
+        link: "/finance/expensetypes",
+      },
+      {
+        name: "Add New Expense Type",
+        link: "/finance/expensetypes/new",
+      },
+    ],
   },
   {
     name: "Settings",

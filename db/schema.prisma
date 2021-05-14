@@ -80,3 +80,29 @@ model Project {
   customer   Customer @relation(fields: [customerId], references: [id])
   customerId Int
 }
+
+model IncomeType {
+  id      Int      @id @default(autoincrement())
+  type    String   @db.VarChar(255)
+  incomes Income[]
+}
+
+model Income {
+  id           Int        @id @default(autoincrement())
+  description  String
+  incomeType   IncomeType @relation(fields: [incomeTypeId], references: [id])
+  incomeTypeId Int
+}
+
+model ExpenseType {
+  id       Int       @id @default(autoincrement())
+  type     String    @db.VarChar(255)
+  expenses Expense[]
+}
+
+model Expense {
+  id            Int         @id @default(autoincrement())
+  description   String
+  expenseType   ExpenseType @relation(fields: [expenseTypeId], references: [id])
+  expenseTypeId Int
+}

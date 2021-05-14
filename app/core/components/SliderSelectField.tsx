@@ -8,7 +8,7 @@ import {
   InputRightElement,
   Text,
 } from "@chakra-ui/react"
-import { NewCustomer } from "app/customers/pages/customers/new"
+import { NewCustomer } from "app/pages/customers/new"
 import React, { Suspense, useCallback, useEffect, useState } from "react"
 import { useField, useForm } from "react-final-form"
 import { FiArrowDown } from "react-icons/fi"

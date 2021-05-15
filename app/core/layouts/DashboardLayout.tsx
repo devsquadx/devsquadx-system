@@ -2,6 +2,9 @@ import { Box, Slide, useMediaQuery, useOutsideClick } from "@chakra-ui/react"
 import { Head } from "blitz"
 import { useAtom } from "jotai"
 import React, { ReactNode, useEffect, useRef } from "react"
+import { AiOutlineDollarCircle } from "react-icons/ai"
+import { BsFiles } from "react-icons/bs"
+import { FiSettings, FiTrello, FiUsers } from "react-icons/fi"
 import LeftSideBar from "../components/Dashboard/LeftSideBar"
 import MainContent from "../components/Dashboard/MainContent"
 import MiddleSideBar from "../components/Dashboard/MiddleSideBar"
@@ -86,3 +89,79 @@ const DashboardLayout = ({ title, children }: LayoutProps) => {
 }
 
 export default DashboardLayout
+
+export const sidebarLinks = [
+  {
+    name: "Dashboard",
+    icon: FiTrello,
+    link: "/",
+    subLinks: [],
+  },
+  {
+    name: "Projects",
+    icon: BsFiles,
+    link: "/projects",
+    subLinks: [
+      {
+        name: "View Projects",
+        link: "/projects",
+      },
+      {
+        name: "Add New Project",
+        link: "/projects/new",
+      },
+    ],
+  },
+  {
+    name: "Customers",
+    icon: FiUsers,
+    link: "/customers",
+    subLinks: [
+      {
+        name: "View Customers",
+        link: "/customers",
+      },
+      {
+        name: "Add New Customer",
+        link: "/customers/new",
+      },
+    ],
+  },
+  {
+    name: "Finance",
+    icon: AiOutlineDollarCircle,
+    link: "/finance",
+    subLinks: [
+      {
+        name: "Incomes",
+        link: "/finance/incomes",
+      },
+      {
+        name: "Expenses",
+        link: "/finance/expenses",
+      },
+      {
+        name: "Income Types",
+        link: "/finance/incometypes",
+      },
+      {
+        name: "Expense Types",
+        link: "/finance/expensetypes",
+      },
+      // {
+      //   name: "Add Income Type",
+      //   link: "/finance/incometypes/new",
+      // },
+      // {
+      //   name: "Add Expense Type",
+      //   link: "/finance/expensetypes/new",
+      // },
+    ],
+  },
+  {
+    name: "Settings",
+    icon: FiSettings,
+    link: "/settings",
+    subLinks: [],
+  },
+]

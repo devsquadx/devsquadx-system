@@ -1,10 +1,10 @@
 import { useRouter } from "@blitzjs/core"
 import { Box, Heading, Icon, useMediaQuery } from "@chakra-ui/react"
+import { sidebarLinks } from "app/core/layouts/DashboardLayout"
 import { showSidebarAtom } from "app/core/store"
 import { useAtom } from "jotai"
 import React, { useEffect, useState } from "react"
 import { BiMenuAltLeft } from "react-icons/bi"
-import { links } from "./SideBarIcons"
 
 interface Props {
   title?: string
@@ -20,7 +20,7 @@ const MainContentHeading: React.FC<Props> = ({ title }) => {
 
   useEffect(() => {
     const path = `/${router.pathname.split("/")[1]}`
-    links.forEach((l) => {
+    sidebarLinks.forEach((l) => {
       if (path === l.link) {
         setHeading(l.name)
         setLoading(false)
@@ -44,7 +44,7 @@ const MainContentHeading: React.FC<Props> = ({ title }) => {
       )}
       <Box bg="gray.100" p="2" borderRadius="full">
         <Icon
-          as={(links.find((l) => l.name === (heading as string)) as any).icon}
+          as={(sidebarLinks.find((l) => l.name === (heading as string)) as any).icon}
           color="gray.600"
           boxSize="8"
         />

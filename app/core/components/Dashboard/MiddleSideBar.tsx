@@ -1,9 +1,9 @@
 import { useRouter } from "@blitzjs/core"
 import { Box, chakra } from "@chakra-ui/react"
+import { sidebarLinks } from "app/core/layouts/DashboardLayout"
 import { Link } from "blitz"
 import React, { useEffect, useState } from "react"
 import CompanyName from "./CompanyName"
-import { links } from "./SideBarIcons"
 
 interface Props {}
 
@@ -13,7 +13,7 @@ const MiddleSideBar: React.FC<Props> = () => {
 
   useEffect(() => {
     const path = `/${router.pathname.split("/")[1]}`
-    links.forEach((l) => {
+    sidebarLinks.forEach((l) => {
       if (path === l.link) {
         setSubLinks(l.subLinks)
       }

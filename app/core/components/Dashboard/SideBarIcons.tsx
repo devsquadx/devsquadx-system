@@ -1,9 +1,7 @@
 import { Box, Icon, theme, Tooltip } from "@chakra-ui/react"
+import { sidebarLinks } from "app/core/layouts/DashboardLayout"
 import { Link, useRouter } from "blitz"
 import React, { useState } from "react"
-import { AiOutlineDollarCircle } from "react-icons/ai"
-import { BsFiles } from "react-icons/bs"
-import { FiSettings, FiTrello, FiUsers } from "react-icons/fi"
 import LogoutIcon from "./LogoutIcon"
 
 const IconLink = ({ icon, name, isActive }) => {
@@ -22,82 +20,6 @@ const IconLink = ({ icon, name, isActive }) => {
 
 interface Props {}
 
-export const links = [
-  {
-    name: "Dashboard",
-    icon: FiTrello,
-    link: "/",
-    subLinks: [],
-  },
-  {
-    name: "Projects",
-    icon: BsFiles,
-    link: "/projects",
-    subLinks: [
-      {
-        name: "View Projects",
-        link: "/projects",
-      },
-      {
-        name: "Add New Project",
-        link: "/projects/new",
-      },
-    ],
-  },
-  {
-    name: "Customers",
-    icon: FiUsers,
-    link: "/customers",
-    subLinks: [
-      {
-        name: "View Customers",
-        link: "/customers",
-      },
-      {
-        name: "Add New Customer",
-        link: "/customers/new",
-      },
-    ],
-  },
-  {
-    name: "Finance",
-    icon: AiOutlineDollarCircle,
-    link: "/finance",
-    subLinks: [
-      {
-        name: "Incomes",
-        link: "/finance/incomes",
-      },
-      {
-        name: "Expenses",
-        link: "/finance/expenses",
-      },
-      {
-        name: "Income Types",
-        link: "/finance/incometypes",
-      },
-      {
-        name: "Add Income Type",
-        link: "/finance/incometypes/new",
-      },
-      {
-        name: "Expense Types",
-        link: "/finance/expensetypes",
-      },
-      {
-        name: "Add Expense Type",
-        link: "/finance/expensetypes/new",
-      },
-    ],
-  },
-  {
-    name: "Settings",
-    icon: FiSettings,
-    link: "/settings",
-    subLinks: [],
-  },
-]
-
 const SideBarIcons: React.FC<Props> = () => {
   const router = useRouter()
   const path = `/${router.pathname.split("/")[1]}`
@@ -111,7 +33,7 @@ const SideBarIcons: React.FC<Props> = () => {
       flex="1"
     >
       <Box>
-        {links.map((l, index) => (
+        {sidebarLinks.map((l, index) => (
           <Link href={l.link} key={index}>
             <a>
               <Tooltip hasArrow placement="right" label={l.name}>

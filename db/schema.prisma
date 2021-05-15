@@ -90,6 +90,7 @@ model IncomeType {
 model Income {
   id           Int        @id @default(autoincrement())
   description  String
+  amount       Decimal    @default(0) @db.Decimal(18, 2)
   incomeType   IncomeType @relation(fields: [incomeTypeId], references: [id])
   incomeTypeId Int
 }
@@ -103,6 +104,7 @@ model ExpenseType {
 model Expense {
   id            Int         @id @default(autoincrement())
   description   String
+  amount        Decimal     @default(0) @db.Decimal(18, 2)
   expenseType   ExpenseType @relation(fields: [expenseTypeId], references: [id])
   expenseTypeId Int
 }

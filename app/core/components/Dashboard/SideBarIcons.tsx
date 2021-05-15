@@ -65,19 +65,27 @@ export const links = [
     link: "/finance",
     subLinks: [
       {
-        name: "View Income Types",
+        name: "Incomes",
+        link: "/finance/incomes",
+      },
+      {
+        name: "Expenses",
+        link: "/finance/expenses",
+      },
+      {
+        name: "Income Types",
         link: "/finance/incometypes",
       },
       {
-        name: "Add New Income Type",
+        name: "Add Income Type",
         link: "/finance/incometypes/new",
       },
       {
-        name: "View Expense Types",
+        name: "Expense Types",
         link: "/finance/expensetypes",
       },
       {
-        name: "Add New Expense Type",
+        name: "Add Expense Type",
         link: "/finance/expensetypes/new",
       },
     ],

@@ -1,6 +1,7 @@
 import { Form, FormProps } from "app/core/components/Form"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import SliderSelectField from "app/core/components/SliderSelectField"
+import { NewCustomer } from "app/pages/customers/new"
 import { Customer } from "db"
 import React from "react"
 import * as z from "zod"
@@ -19,6 +20,7 @@ export function ProjectForm<S extends z.ZodType<any, any>>(
         label="Customer"
         placeholder="Select Customer"
         options={props.customers.map((c) => ({ label: c.name, value: c.id }))}
+        FormComponent={NewCustomer}
       />
       {/* <LabeledSelectField
         name="customerId"

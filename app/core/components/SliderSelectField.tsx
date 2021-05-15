@@ -8,7 +8,6 @@ import {
   InputRightElement,
   Text,
 } from "@chakra-ui/react"
-import { NewCustomer } from "app/pages/customers/new"
 import React, { Suspense, useCallback, useEffect, useState } from "react"
 import { useField, useForm } from "react-final-form"
 import { FiArrowDown } from "react-icons/fi"
@@ -22,9 +21,16 @@ export interface Props {
     value: number
   }[]
   [x: string]: any
+  FormComponent: any
 }
 
-export const SliderSelectField: React.FC<Props> = ({ name, label, options, ...props }) => {
+export const SliderSelectField: React.FC<Props> = ({
+  name,
+  label,
+  options,
+  FormComponent,
+  ...props
+}) => {
   const {
     input,
     meta: { touched, error, submitError, submitting },
@@ -111,7 +117,7 @@ export const SliderSelectField: React.FC<Props> = ({ name, label, options, ...pr
       {addMode && (
         <SideDrawer isOpen={addMode} setOpen={setAddMode} title={`Add ${label}`}>
           <Suspense fallback={<div>Loading...</div>}>
-            <NewCustomer returnFunc={setAddMode} />
+            <FormComponent returnFunc={setAddMode} />
           </Suspense>
         </SideDrawer>
       )}

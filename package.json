@@ -11,7 +11,8 @@
     "test:watch": "jest --watch",
     "prepare": "husky install",
     "migrate-dev": "blitz prisma migrate dev",
-    "migrate-prod": "NODE_ENV=production blitz prisma migrate deploy"
+    "migrate-prod": "NODE_ENV=production blitz prisma migrate deploy",
+    "gen": "blitz codegen"
   },
   "prisma": {
     "schema": "db/schema.prisma"

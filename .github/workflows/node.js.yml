@@ -28,5 +28,6 @@ jobs:
     - run: yarn install
     - run: yarn migrate-prod
     - run: rm -rf .next
+    - run: rm -rf node_modules
     - run: yarn build
     - run: pm2 start all

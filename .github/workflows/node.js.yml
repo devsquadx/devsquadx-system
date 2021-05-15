@@ -27,5 +27,6 @@ jobs:
     - run: pm2 stop all
     - run: yarn install
     - run: yarn migrate-prod
+    - run: rm -rf .next
     - run: yarn build
     - run: pm2 start all
